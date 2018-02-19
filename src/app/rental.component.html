@@ -1,0 +1,53 @@
+
+
+<h1> Add Rentals </h1>
+<br>
+         <!-- <table class="table">
+             <tr>
+                 <th>Customer Name </th>
+                 <th> Movie Name </th> 
+             </tr>
+             <tr *ngFor="let item of arItems">
+                 <td>{{item.MovieId}}</td>
+                  <td>{{item.CustomerId}}</td>
+                 </tr>
+            </table> -->
+
+            <!-- <button (click)="showForm1()" class="btn btn-primary">Add Movie</button> -->
+   
+    <form  (ngSubmit)="submitHandler1(trvform1)" #trvform1="ngForm">
+      <div id="div1">
+            <div class="form-group">
+            <label for="ideCat">Select Customer</label>
+            
+    <select id="ideCat" type="text" [(ngModel)]="custId" name="cate" class="form-control" >
+
+                <option *ngFor="let item of arItemsCus" value="{{item.Id}}">
+                    {{item.Name}}
+                </option>
+             
+    </select>
+            {{custId}}
+        </div>
+
+
+        <div class="form-group">
+            <label for="idName">Select Movie</label>
+                    
+    <select id="idName" type="number" [(ngModel)]="movieId" name="name" class="form-control" >
+                <option *ngFor="let item of arItemsMov" value="{{item.Id}}" >{{item.Movie}}</option>
+             
+    </select>
+            {{movieId}}
+      
+        </div>
+      
+              <div>
+            <button class= btn btn-primary type="submit" [disabled]="!trvform1.valid">Save</button>
+        </div>
+          </div>
+    </form>
+
+     
+
+ 

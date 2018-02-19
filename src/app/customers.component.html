@@ -1,0 +1,71 @@
+<h1> List Of Customers </h1>
+<br>
+
+         <table class="table">
+             <tr>
+                 <th>  Name </th>
+                 <th>  Subscriber Type </th> 
+                  <th>  Age </th> 
+             </tr>
+             <tr *ngFor="let item of arItems">
+                 <td>{{item.Name}}</td>
+                  <td>{{item.subscriberType}}</td>
+                   <td>{{item.Age}}</td>
+                 </tr>
+            </table>
+
+            <button (click)="showForm1()" class="btn btn-primary">Add Customer</button>
+    
+    <form *ngIf="isFormShow1" (ngSubmit)="submitHandler1(trvform1)" #trvform1="ngForm">
+             <div id="div1">
+
+        <div class="form-group">
+            <label for="idName"> Name</label>
+            <input id="idName" type="text" [(ngModel)]="name" name="name" class="form-control" required #trvName1="ngModel">
+            <div *ngIf="trvName1.errors && (trvName1.dirty || trvName1.touched)" class="alert alert-danger">
+                <div [hidden]="!trvName1.errors.required">
+                    Name is required
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="ideCat">  Subscriber Type  </label>
+            
+    <select [(ngModel)]="cate" name="cate" class="form-control" required 
+                #trvCat1="ngModel">
+      <option >Monthly</option>
+                <option>Pay as you go</option>
+                <option>Quartely</option>
+                <option>Annual</option>
+    </select>
+            <!-- <input id="ideCat" type="email" [(ngModel)]="cate" name="cate" class="form-control" required 
+                #trvCat1="ngModel"> -->
+            <div *ngIf="trvCat1.errors && (trvCat1.dirty || trvCat1.touched)" class="alert alert-danger">
+                <div [hidden]="!trvCat1.errors.required">
+                    Category is required
+                </div>
+               
+            </div>
+        </div>
+
+          <div class="form-group">
+            <label for="ideCat">Age</label>
+            <input id="ideCat" type="number" [(ngModel)]="age" name="age" class="form-control" required 
+                #trvAge1="ngModel">
+            <div *ngIf="trvAge1.errors && (trvAge1.dirty || trvAge1.touched)" class="alert alert-danger">
+                  <div [hidden]="!trvAge1.errors.required">
+                    Age is required
+                </div> 
+                 
+            </div>
+        </div>
+              <div>
+            <button class= btn btn-primary type="submit" [disabled]="!trvform1.valid">Save</button>
+        </div>
+       </div>
+    </form>
+        
+
+
+
+ 
